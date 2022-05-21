@@ -1,20 +1,41 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
 class Msgs extends ChangeNotifier {
   /// 0->sent, 1->received
-  List<String> atSender=<String>[];
-  List<String> atSenderEnc=<String>[];
-  List<String> atReceiver=<String>[];
-  List<String> atReceiverEnc=<String>[];
-  void sentFromSender(String msg,String enc) {
-    atSender.add(msg);
-    atSenderEnc.add(enc);
+  Map<int,List<String>> atDonia=<int,List<String>> {};
+  List<String> atDoniaEnc=<String>[];
+
+  ////////////////////////////////////////
+  Map<int,List<String>> atRaghad=<int,List<String>> {};
+  List<String> atRaghadEnc=<String>[];
+
+
+  void sentFromDonia(String msg,String enc) {
+    atDonia[atDoniaEnc.length]=<String>["sent",
+    msg];
+
+    atDoniaEnc.add(enc);
     notifyListeners();
   }
 
-  void receivedToReceiver(String msg,String enc) {
-    atReceiver.add(msg);
-    atReceiverEnc.add(enc);
+  void receivedToDonia(String msg,String enc) {
+    atDonia[atDoniaEnc.length]=<String>["rec",
+      msg];
+    atDoniaEnc.add(enc);
+    notifyListeners();
+  }
+
+  void sentFromRaghad(String msg,String enc) {
+    atRaghad[atRaghadEnc.length]=<String>["sent",
+      msg];
+    atRaghadEnc.add(enc);
+    notifyListeners();
+  }
+
+  void receivedToRaghad(String msg,String enc) {
+    atRaghad[atRaghadEnc.length]=<String>["rec",
+      msg];
+    atRaghadEnc.add(enc);
     notifyListeners();
   }
 }

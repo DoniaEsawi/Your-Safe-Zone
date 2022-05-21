@@ -1,10 +1,13 @@
 import "package:flutter/material.dart";
 import "package:responsive_grid/responsive_grid.dart";
-import "package:rsa_algorithm/src/screens/view/communicate.dart";
 import "package:rsa_algorithm/src/screens/widgets/card.dart";
 
 class SendRecieveMenu extends StatelessWidget {
+  final VoidCallback onComClicked;
+  final VoidCallback onStatisticsClicked;
   const SendRecieveMenu({
+    required this.onComClicked,
+    required this.onStatisticsClicked,
     required this.endedFade,
 
     Key? key,
@@ -35,11 +38,7 @@ class SendRecieveMenu extends StatelessWidget {
                   lg: 6,
                   xs: 6,
                   child: GestureDetector(
-                    onTap: (){
-                      Navigator.push(context, MaterialPageRoute<void>
-                        (builder: (BuildContext context) => const Communicate()
-                      ));
-                    },
+                    onTap: onComClicked,
                     child: MenuCard(endedFade: endedFade,
                       imageName: "communicate.png",
                       cardTitle: "Communicate",
@@ -50,9 +49,13 @@ class SendRecieveMenu extends StatelessWidget {
                   xl: 3,
                   lg: 6,
                   xs: 6,
-                  child: MenuCard(endedFade: endedFade,
-                    imageName: "statistics.png",
-                    cardTitle: "Statistics",
+                  child: GestureDetector(
+                    onTap: onStatisticsClicked,
+                    child: MenuCard(endedFade: endedFade,
+                      imageName: "statistics.png",
+                      cardTitle: "Statistics",
+
+                    ),
                   ),
                 ),
                 ResponsiveGridCol(
