@@ -81,7 +81,7 @@ Install Flask
 https://user-images.githubusercontent.com/56982963/169654352-aed3242c-1a6c-4c3d-bfb0-141a62bea9c9.mp4
 
 
-### Communicate secretly
+### Communicate securely
 
 https://user-images.githubusercontent.com/56982963/169654881-5ab3ad05-0bcd-4a29-a4db-2bfaddabbf92.mp4
 
